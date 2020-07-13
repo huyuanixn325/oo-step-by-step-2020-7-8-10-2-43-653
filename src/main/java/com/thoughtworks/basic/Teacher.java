@@ -15,4 +15,12 @@ public class Teacher extends Person{
     public String introduce() {
         return super.introduce()+" I am a "+job+".";
     }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
 }
