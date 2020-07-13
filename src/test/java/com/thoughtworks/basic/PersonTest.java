@@ -9,7 +9,7 @@ public class PersonTest {
     @Test
     public void should_return_String_when_given_tom_and_21() {
         //given
-        Person person = new Person('tom',21);
+        Person person = new Person("tom",21);
         //when
         String introduce = person.introduce();
 
