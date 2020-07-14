@@ -23,4 +23,8 @@ public class Student extends Person{
     public void setkClass(KClass kClass) {
         this.kClass = kClass;
     }
+
+    public void changeName(String newName){
+        super.setName(newName);
+    }
 }
