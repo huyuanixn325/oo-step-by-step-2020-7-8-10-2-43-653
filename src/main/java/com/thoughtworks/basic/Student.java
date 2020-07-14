@@ -26,5 +26,19 @@ public class Student extends Person{
 
     public void changeName(String newName){
         super.setName(newName);
+        sendMessageToTehcherAndOtherStudents();
     }
+    public void sendMessageToTehcherAndOtherStudents(){
+        if (this.kClass.getTeacher()!=null){
+            this.kClass.getTeacher().addMessage(this.introduce());
+        }
+        if (this.kClass.getStudents().size()>1){
+            for (Student student:this.kClass.getStudents()){
+                if (student.getName()!=this.getName()&&student.getAge()!=this.getAge()){
+                    student.addMessage(this.introduce());
+                }
+            }
+        }
+    }
+
 }

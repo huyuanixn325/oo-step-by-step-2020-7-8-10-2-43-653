@@ -1,5 +1,6 @@
 package com.thoughtworks.basic;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -40,5 +41,24 @@ public class StudentTest {
 
         //then
         assertEquals(introduce,"My name is Jack. I am 21 years old. I am a Student of Class 2.");
+    }
+
+    @Test
+    public void should_return_a_message_when_given_Tom_and_21_class_2_and_checkd_jack() {
+        //given
+        Student student = new Student("Tom",21);
+        List<Student> students = new ArrayList<>();
+        students.add(student);
+        Teacher teacher = new Teacher("Matt",30,"Teacher");
+        KClass kClass = new KClass(2,"2班",students,teacher);
+        student.setkClass(kClass);
+
+        student.changeName("Jack");
+        //when
+        List<String> messages = teacher.getMessage();
+
+        //then
+        Assert.assertEquals(messages.size(),1);
+        assertEquals(messages.get(0),"My name is Jack. I am 21 years old. I am a Student of Class 2.");
     }
 }
