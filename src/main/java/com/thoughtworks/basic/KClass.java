@@ -46,4 +46,16 @@ public class KClass {
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
+
+    public void addStudent(Student student){
+        this.getStudents().add(student);
+    }
+
+    public void deleteStudent(Student student){
+        for (Student student1:this.getStudents()){
+            if (student.getAge()==student1.getAge()&&(student.getName().equals(student1.getName()))){
+                this.getStudents().remove(student);
+            }
+        }
+    }
 }

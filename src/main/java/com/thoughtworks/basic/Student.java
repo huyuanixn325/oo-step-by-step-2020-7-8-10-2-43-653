@@ -28,6 +28,9 @@ public class Student extends Person{
         super.setName(newName);
         sendMessageToTehcherAndOtherStudents();
     }
+
+
+
     public void sendMessageToTehcherAndOtherStudents(){
         if (this.kClass.getTeacher()!=null){
             this.kClass.getTeacher().addMessage(this.introduce());
