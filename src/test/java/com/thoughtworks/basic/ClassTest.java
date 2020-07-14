@@ -21,5 +21,17 @@ public class ClassTest {
         assertEquals(teacherResult.getAge(),teacher.getAge());
         assertEquals(teacherResult.getName(),teacher.getName());
     }
-
+    @Test
+    public void should_return_3_when_given_studentList() {
+        //given
+        List<Student> students = new ArrayList<>();
+        Teacher teacher = new Teacher("Matt",30,"Teacher");
+        KClass myclass = new KClass(2,"二年级二班",students,teacher);
+        //when
+        Teacher teacherResult = myclass.getTeacher();
+        //then
+        assertEquals(teacherResult.getJob(),teacher.getJob());
+        assertEquals(teacherResult.getAge(),teacher.getAge());
+        assertEquals(teacherResult.getName(),teacher.getName());
+    }
 }
