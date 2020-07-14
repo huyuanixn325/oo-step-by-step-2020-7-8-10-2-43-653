@@ -26,19 +26,27 @@ public class Student extends Person{
 
     public void changeName(String newName){
         super.setName(newName);
-        sendMessageToTehcherAndOtherStudents();
+        sendMessageToTehcherAndOtherStudents(this.introduce());
     }
 
+    public void changeClass(KClass kClass){
+        sendMessageToTehcherAndOtherStudents(this.introduce());
+        this.kClass.deleteStudent(new Student(this.getName(),this.getAge()));
+        kClass.addStudent(this);
+        this.setkClass(kClass);
+        sendMessageToTehcherAndOtherStudents(this.introduce()+"now");
+    }
 
-
-    public void sendMessageToTehcherAndOtherStudents(){
+    public void sendMessageToTehcherAndOtherStudents(String message){
         if (this.kClass.getTeacher()!=null){
-            this.kClass.getTeacher().addMessage(this.introduce());
+            this.kClass.getTeacher().addMessage(message);
         }
         if (this.kClass.getStudents().size()>1){
             for (Student student:this.kClass.getStudents()){
-                if (student.getName()!=this.getName()&&student.getAge()!=this.getAge()){
-                    student.addMessage(this.introduce());
+                if (student.getName()==this.getName()&&student.getAge()==this.getAge()){
+                    continue;
+                }else {
+                    student.addMessage(message);
                 }
             }
         }
